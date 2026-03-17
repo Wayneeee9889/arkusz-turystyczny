@@ -1,5 +1,18 @@
+-- wybierające jedynie nazwy wszystkich miejscowości posortowane rosnąco 
+
 SELECT nazwa FROM miejsca ORDER BY nazwa ASC;
 
-SELECT cena FROM miejsca WHERE nazwa ="Malbork";
+-- wybierające jedynie cenę wycieczki do Malborka 
+
+SELECT cena FROM miejsca WHERE nazwa = "Malbork";
+
+-- wybierające jedynie nazwę, cenę i link obrazu z tabeli miejsca dla wierszy, w których link obrazu rozpoczyna się od 0 (zero) 
 
 SELECT nazwa, cena, link_obraz FROM miejsca WHERE link_obraz LIKE '0%';
+
+-- wybierające jedynie nazwy wszystkich miejsc i odpowiadające im obliczone średnie liczby osób dorosłych, zgrupowane według nazw miejsc. Średnia liczba osób jest zaokrąglona do liczby całkowitej. Należy posłużyć się relacją 
+
+SELECT nazwa, ROUND(AVG(liczba_doroslych)) AS "Srednia liczba osób dorosłych" FROM miejsca FULL JOIN wycieczki GROUP BY nazwa;
+
+
+
